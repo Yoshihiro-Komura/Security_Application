@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>選択オプションのクリアと追加。&#13;
+更新履歴の準備。</description>
+        <field>sys_created_on</field>
+        <global>true</global>
+        <messages/>
+        <name>onLoad for Application Setting</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+	
+	//Type appropriate comment here, and begin script below
+	g_form.setValue('u_boolean', true);
+	// 変数の設定
+	var setVal_1 = "u_resource_name";
+	var setVal_2 = "u_request_name";
+	var setVal_3 = "u_set_name";
+	var valDate;
+	var valUserName = g_user.getFullName();
+	var valUserId = g_user.userID;
+
+	// Itemで登録されたFieldの読込
+	var getRecord = new GlideAjax('GetReturnField');
+	getRecord.addParam('sysparm_name', 'getField');
+	getRecord.getXML(getreturnField);
+	
+	function getreturnField(response){
+		var ans = response.responseXML.documentElement.getAttribute("answer");
+		var sec_00 = [];
+		var sec_01 = [];
+		var sec_02 = [];
+		var sec_03 = [];
+		sec_00 = ans.split('//');
+		sec_01 = sec_00[0].split(',,');
+		sec_02 = sec_00[1].split(',,');
+		sec_03 = sec_00[2].split(',,');
+
+		 var tes = g_form.getValue(setVal_1);
+		// clearOptionsは、既存のインシデントを読込んだ時に、選択されたものが消えるので
+		// 保存してから使うこと
+		g_form.clearOptions(setVal_1);
+		g_form.addOption(setVal_1, '', '-- 未選択 --');
+		for(var ii = 0; ii < (sec_01.length - 1); ii++){
+			g_form.addOption(setVal_1, sec_01[ii], sec_01[ii]);
+		}
+		g_form.setValue(setVal_1, tes, tes);
+		
+		tes = g_form.getValue(setVal_2);
+		g_form.clearOptions(setVal_2);
+		g_form.addOption(setVal_2, '', '-- 未選択 --');
+		for(ii = 0; ii < (sec_02.length -1); ii++){
+			g_form.addOption(setVal_2, sec_02[ii], sec_02[ii]);
+		}
+		g_form.setValue(setVal_2, tes, tes);
+
+		tes = g_form.getValue(setVal_3);
+		g_form.clearOptions(setVal_3);
+		g_form.addOption(setVal_3, '', '-- 未選択 --');
+		for(ii = 0; ii < (sec_03.length -1); ii++){
+			g_form.addOption(setVal_3, sec_03[ii], sec_03[ii]);
+		}
+		g_form.setValue(setVal_3, tes, tes);
+
+		// 日時の書込
+		var getDate = new GlideAjax('MyDateTimeAjax');
+		getDate.addParam('sysparm_name', 'nowDateTime');
+		getDate.getXML(populateGetDT);
+
+		function populateGetDT(response) {
+			valDate = response.responseXML.documentElement.getAttribute("answer");
+			g_form.setValue('u_res_date', valDate);
+
+			// 所属の書込み
+			var getDepart = new GlideAjax('GetDepartment');
+			getDepart.addParam('sysparm_name', 'getDepa');
+			getDepart.addParam('sysparm_userID', valUserId);
+			getDepart.getXML(dePart);
+			function dePart(response) {
+				var valUN = valUserName + " / " +  response.responseXML.documentElement.getAttribute("answer");
+				g_form.setValue('u_res_name', valUN);
+				g_form.setValue('u_boolean', false);
+			}
+		}
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-09 00:07:44</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d05ad1100fa04300fd4e758ce1050e32</sys_id>
+        <sys_mod_count>34</sys_mod_count>
+        <sys_name>onLoad for Application Setting</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_script_client_d05ad1100fa04300fd4e758ce1050e32</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-17 05:04:11</sys_updated_on>
+        <table>x_136731_security_application_classification_setting</table>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

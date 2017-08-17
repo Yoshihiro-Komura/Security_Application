@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>選択肢各項目の前後のスペース（半角/全角）を削除する。&#13;
+５桁の入力を確認する。</description>
+        <field>u_department_manager_code</field>
+        <global>true</global>
+        <messages/>
+        <name>onChange for DB Setting on 所属部門長役職コード</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	var valBol = g_form.getBooleanValue('u_boolean');
+	if (isLoading || newValue == '' || newValue == oldValue || valBol) {
+		return;
+	}
+
+	//Type appropriate comment here, and begin script below
+	g_form.setValue('u_boolean', true);
+	// 操作しているFieldを登録
+	var opeFld ='u_department_manager_code';
+	// 前後のスペースを削除
+	newValue = strTrim(newValue) + '';
+	g_form.setValue(opeFld, newValue);
+	// 有効桁数の確認
+	if(newValue.length != 5){
+		alert('５桁で入力してください。');
+		g_form.clearValue(opeFld);
+	}
+	
+	g_form.setValue('u_boolean', false);
+
+	// Trim関数の代わり
+	function strTrim(str){
+		var end = str.length;
+		var stt = 0;
+		while(str.charAt(stt) == ' ' || str.charAt(stt) == '　'){
+			stt++;
+		}
+		while(str.charAt(end - 1) == ' ' || str.charAt(end - 1) == '　'){
+			end--;
+		}
+		return str.substring(stt, end);
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-17 05:19:41</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>ff10f73e0fa80300fd4e758ce1050e57</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>onChange for DB Setting on 所属部門長役職コード</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_script_client_ff10f73e0fa80300fd4e758ce1050e57</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-17 05:24:22</sys_updated_on>
+        <table>x_136731_security_db_setting</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

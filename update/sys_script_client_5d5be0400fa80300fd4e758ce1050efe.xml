@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>前後のスペース（半角/全角）の削除。&#13;
+入力チェック。&#13;
+１：数値であること&#13;
+２：桁数を揃えている事(仮に８桁としています)&#13;
+３：既に登録された中にないこと</description>
+        <field>u_set_sort</field>
+        <global>true</global>
+        <messages/>
+        <name>onChenge for AppItem on 申請区分③(並び順)</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	var valBol = g_form.getBooleanValue('u_boolean');
+	if (isLoading || newValue == '' || newValue == oldValue || valBol) {
+		return;
+	}
+
+	var fieldName = "u_set_sort";
+	var fieldNAME = "申請区分③(並び順)";
+
+	newValue = strTrim(newValue) + '';
+	g_form.setValue('u_boolean', true);
+	g_form.setValue(fieldName, newValue);
+	g_form.setValue('u_boolean', false);
+
+	//Type appropriate comment here, and begin script below
+	if(isNaN(newValue)){
+		g_form.clearValue(fieldName);
+		alert("【" + fieldNAME + "】\n数値以外は入力できません。");
+		return;
+	}
+	if(newValue.length != 8){
+		alert("【" + fieldNAME + "】\n入力は8桁にそろえてください\n桁が不足する場合は、0で埋めてください");
+		return;
+	}
+	
+	var getIsSearch = new GlideAjax('IsSearchField');
+	getIsSearch.addParam('sysparm_name', 'isSearch');
+	getIsSearch.addParam('sysparm_searchName', fieldName);
+	getIsSearch.addParam('sysparm_searchField', newValue);
+	getIsSearch.getXML(populateAnswer);
+	
+	function populateAnswer(response){
+		var ans = response.responseXML.documentElement.getAttribute("answer");
+		if(ans > 0){
+			alert("『" + newValue + "』は、既に登録されています");
+			g_form.clearValue(fieldName);
+		}
+	}
+	// Trim関数の代わり
+	function strTrim(str){
+		var end = str.length;
+		var stt = 0;
+		while(str.charAt(stt) == ' ' || str.charAt(stt) == '　'){
+			stt++;
+		}
+		while(str.charAt(end - 1) == ' ' || str.charAt(end - 1) == '　'){
+			end--;
+		}
+		return str.substring(stt, end);
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-08 01:55:29</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>5d5be0400fa80300fd4e758ce1050efe</sys_id>
+        <sys_mod_count>36</sys_mod_count>
+        <sys_name>onChenge for AppItem on 申請区分③(並び順)</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_script_client_5d5be0400fa80300fd4e758ce1050efe</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-16 23:44:52</sys_updated_on>
+        <table>x_136731_security_application_classification_item</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

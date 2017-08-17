@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>入力チェック。&#13;
+申請区分①・申請区分③に選択があった場合、申請区分①・申請区分②・申請区分③から申請区分タイトルを生成し、&#13;
+既に登録されていないかどうかをチェックする。</description>
+        <field>u_resource_name</field>
+        <global>true</global>
+        <messages/>
+        <name>onChange for AppSet on 申請区分①</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	var valBol = g_form.getBooleanValue('u_boolean');
+	if (isLoading || valBol) {
+		return;
+	}
+
+	g_form.setValue('u_boolean', true);
+	// 操作しているフィールド名を登録する
+	var opeField = "u_resource_name";
+	//　操作しているFieldに連動させるFiledを指定する
+	var setField = "u_resource_sort";
+
+	var getField = new GlideAjax('GetReturnFieldSingle');
+	getField.addParam('sysparm_name','getReturnField');
+	getField.addParam('sysparm_searchField', newValue);
+	getField.addParam('sysparm_searchName', opeField);
+	getField.getXML(populate);
+
+	function populate(response){
+		var getSort = response.responseXML.documentElement.getAttribute("answer");
+		if(isNaN(getSort)){
+			g_form.clearValue(setField);
+		} else {
+			g_form.setValue(setField, getSort + '');
+		}
+
+		// 申請区分①~③を申請区分に入れる
+		var classSec1 = g_form.getValue('u_resource_name');
+		var classSec2 = g_form.getValue('u_request_name');
+		var classSec3 = g_form.getValue('u_set_name');
+		// 申請区分のFieldを入れておく
+		var classVal = 'u_classification';
+		// 申請区分１と３に選択があったら検索->チェックを行い、なければ申請区分をクリアする
+		if(classSec1.length > 0 && classSec3.length > 0){
+			// 申請区分の生成
+			var classSec0 = classSec1 + (classSec2.length > 0 ? ' ' + classSec2 : '') + ' (' + classSec3 + ')';
+			// テーブルのデータを呼び出すためGlideAjaxを使用(サーバーサイドスクリプト制御)
+			var getIsSearch = new GlideAjax('IsSearchField2');
+			// パラメータで、起動するFunctionの名前を指定
+			getIsSearch.addParam('sysparm_name', 'isSearch2');
+			// パラメータで、値を渡す
+			getIsSearch.addParam('sysparm_searchField', classSec0);
+			getIsSearch.addParam('sysparm_searchSysId', g_form.getUniqueValue());
+			// サーバーサイドスクリプトを起動する
+			getIsSearch.getXML(populateAnswer);
+
+		} else {
+			g_form.clearValue(classVal);
+		}
+		// 受け取りは、getXMLで指定した名前で処理する
+		// この処理は、一番最後にされる為、返し値で処理できない
+		// Functionは、If文の中に入れておくとエラーになるので、外に設置する
+		function populateAnswer(response){
+			var ans = response.responseXML.documentElement.getAttribute("answer");
+			if(ans > 0){
+				// 既にあったら、アラート表示を行い、操作しているFieldと登録する予定のFieldをクリアする
+				var classSec00 = "「申請区分①」 " + classSec1 + (classSec2.length > 0 ?  "「申請区分②」 " + classSec2 : '') + ' 「申請区分③」 ' + classSec3;
+				alert(classSec00 + "\nは既に登録済みです。");
+				g_form.clearValue(opeField);
+				g_form.clearValue(setField);
+				g_form.clearValue(classVal);
+			} else {
+				// なければ、Fieldに登録する
+				g_form.setValue(classVal, classSec0);
+			}
+		}
+	}
+	g_form.setValue('u_boolean', false);
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-15 00:23:51</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>792958920f680300fd4e758ce1050e10</sys_id>
+        <sys_mod_count>51</sys_mod_count>
+        <sys_name>onChange for AppSet on 申請区分①</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_script_client_792958920f680300fd4e758ce1050e10</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-16 06:55:05</sys_updated_on>
+        <table>x_136731_security_application_classification_setting</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

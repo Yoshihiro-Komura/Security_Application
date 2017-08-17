@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>u_denial_mail_days</field>
+        <global>true</global>
+        <messages/>
+        <name>onChange for DB Setting on 否認（日数）</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	var valBol = g_form.getBooleanValue('u_boolean');
+	if (isLoading || newValue == '' || newValue == oldValue || valBol) {
+		return;
+	}
+
+	//Type appropriate comment here, and begin script below
+	// 操作しているFieldを登録
+	var opeFld ='u_denial_mail_days';
+	// 連動するFieldを登録
+	var itlFld = 'u_denial';
+	// 開始日と終了日に入力があるか？
+	if(newValue != ''){
+		if(newValue < 0 || newValue > 9){
+			alert('「否認メール（自動）_日数」は0～9の数値を入力してください。');
+			g_form.clearValue(opeFld);
+		}
+		var msg = 'ステータスが"承認中"で依頼日から『 ' + newValue + ' 』日以上経過した申請文書';
+		g_form.setValue(itlFld, msg);
+	} else {
+		g_form.clearValue(itlFld);
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-17 08:03:31</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3414d08f0fe80300fd4e758ce1050e10</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>onChange for DB Setting on 否認（日数）</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_script_client_3414d08f0fe80300fd4e758ce1050e10</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-17 08:07:15</sys_updated_on>
+        <table>x_136731_security_db_setting</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

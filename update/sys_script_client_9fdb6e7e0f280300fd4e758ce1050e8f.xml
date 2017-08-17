@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>選択肢各項目の前後のスペース（半角/全角）を削除する。</description>
+        <field>u_applicant_3_choice</field>
+        <global>true</global>
+        <messages/>
+        <name>onChange for ParaSet Applicant 3 Choice</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	var valBol = g_form.getBooleanValue('u_boolean');
+	if (isLoading || newValue == '' || newValue == oldValue || valBol) {
+		return;
+	}
+
+	//Type appropriate comment here, and begin script below
+	g_form.setValue('u_boolean', true);
+	// 操作しているFieldを登録
+	var opeFld ='u_applicant_3_choice';
+	// 変数に取込み
+	var getVal = [];
+	getVal = newValue.split(';');
+	// 書き込み用を用意
+	var setVal = '';
+	
+	// 選択肢の数分、整形しながら、用意した変数に入れる
+	for(var ii = 0; ii < getVal.length; ii++){
+		setVal += strTrim(getVal[ii]);
+		if(ii + 1 < getVal.length){
+			setVal += ';';
+		}
+	}
+	g_form.setValue(opeFld, setVal);
+	
+	g_form.setValue('u_boolean', false);
+
+	// Trim関数の代わり
+	function strTrim(str){
+		var end = str.length;
+		var stt = 0;
+		while(str.charAt(stt) == ' ' || str.charAt(stt) == '　'){
+			stt++;
+		}
+		while(str.charAt(end - 1) == ' ' || str.charAt(end - 1) == '　'){
+			end--;
+		}
+		return str.substring(stt, end);
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-17 00:19:53</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>9fdb6e7e0f280300fd4e758ce1050e8f</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>onChange for ParaSet Applicant 3 Choice</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_script_client_9fdb6e7e0f280300fd4e758ce1050e8f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-17 05:28:38</sys_updated_on>
+        <table>x_136731_security_parameter_setting</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

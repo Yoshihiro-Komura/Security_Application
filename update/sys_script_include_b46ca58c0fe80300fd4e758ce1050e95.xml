@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_136731_security.GetDepartment</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>GetDepartment</name>
+        <script><![CDATA[var GetDepartment = Class.create();
+GetDepartment.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	getDepa: function(){
+		var gU = new GlideRecord("sys_user");
+		gU.get(this.getParameter('sysparm_userID'));
+		//gs.addErrorMessage(gU.department);
+		var gD = new GlideRecord("cmn_department");
+		gD.get(gU.department);
+		return gD.name + '';
+	},
+	type: 'GetDepartment'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-08 06:44:28</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>b46ca58c0fe80300fd4e758ce1050e95</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>GetDepartment</sys_name>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_script_include_b46ca58c0fe80300fd4e758ce1050e95</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-14 08:22:47</sys_updated_on>
+    </sys_script_include>
+</record_update>

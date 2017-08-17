@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>入力チェック。&#13;
+数値であるか？&#13;
+単位が「年」であれば１～９、「月」であれば１～９９の範囲であるか？</description>
+        <field>u_archive_time</field>
+        <global>true</global>
+        <messages/>
+        <name>onChange for DB Setting on アーカイブ期間</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	var valBol = g_form.getBooleanValue('u_boolean');
+	if (isLoading || newValue == '' || newValue == oldValue || valBol) {
+		return;
+	}
+
+	//Type appropriate comment here, and begin script below
+	// 操作しているFieldを登録
+	var opeFld ='u_manager_code';
+	// 単位の読込み
+	var valUnit = g_form.getValue('u_archive_unit');
+	// 数値か？
+	if(isNaN(newValue)){
+		alert('「アーカイブ期間」は数値を入れてください。');
+		g_form.clearValue(opeFld);
+		return;
+	}
+	// 単位がセレクトされているか？
+	if(valUnit == ''){
+		alert('「アーカイブ期間」を設定する時は、「単位」を先に選択してください。');
+		g_form.clearValue(opeFld);
+		return;
+	}
+	// 有効範囲の確認
+	if(valUnit == 1){
+		if(newValue > 0 && newValue < 10){
+			alert('「アーカイブ期間」は単位が「年」の場合、1～9の整数のみ入力可です。');
+			g_form.clearValue(opeFld);
+			return;
+		}
+	} else if(valUnit == 2){
+		if(newValue > 0 && newValue < 100){
+			alert('「アーカイブ期間」は単位が「月」の場合、1～99の整数のみ入力可です。');
+			g_form.clearValue(opeFld);
+			return;
+		}
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-17 05:51:23</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>bf93ff7e0fa80300fd4e758ce1050e08</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>onChange for DB Setting on アーカイブ期間</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_script_client_bf93ff7e0fa80300fd4e758ce1050e08</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-17 06:02:38</sys_updated_on>
+        <table>x_136731_security_db_setting</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>
