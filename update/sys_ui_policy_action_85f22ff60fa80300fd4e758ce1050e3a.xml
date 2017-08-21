@@ -19,7 +19,7 @@
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2017-08-17 04:20:26</sys_updated_on>
         <table>x_136731_security_db_setting</table>
-        <ui_policy display_value="DB Setting for Dunning on Hide2">32c2abf60fa80300fd4e758ce1050ed9</ui_policy>
+        <ui_policy display_value="DB Setting for Dunning on Hide">32c2abf60fa80300fd4e758ce1050ed9</ui_policy>
         <visible>true</visible>
     </sys_ui_policy_action>
 </record_update>

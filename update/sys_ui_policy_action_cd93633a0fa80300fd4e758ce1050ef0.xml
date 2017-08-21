@@ -19,7 +19,7 @@
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2017-08-17 04:23:02</sys_updated_on>
         <table>x_136731_security_db_setting</table>
-        <ui_policy display_value="DB Setting for Denial on Hide2">ac63233a0fa80300fd4e758ce1050e5f</ui_policy>
+        <ui_policy display_value="DB Setting for Denial on Hide">ac63233a0fa80300fd4e758ce1050e5f</ui_policy>
         <visible>true</visible>
     </sys_ui_policy_action>
 </record_update>

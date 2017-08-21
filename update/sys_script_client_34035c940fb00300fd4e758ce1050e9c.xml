@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>読み込み時の動作設定</description>
+        <field>u_applicant_free</field>
+        <global>true</global>
+        <messages/>
+        <name>onLoad for Applicant Form</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+	//Type appropriate comment here, and begin script below
+	// 新規作成時に動作
+	if(g_form.isNewRecord()){
+		// パラメータ設定の読み込み
+		var getParaSet = new GlideAjax('GetParaSet');
+		getParaSet.addParam('sysparm_name', 'getPara');
+		getParaSet.getXML(populatePara);
+		
+	}
+	function populatePara(response){
+		var ii = 0;
+		var iniVal = [];
+		var getPARA = response.responseXML.documentElement.getAttribute("answer");
+		// 整理
+		iniVal = getPARA.split(';:;');
+		var setVal = [iniVal.length];
+		for(ii = 0; ii < iniVal.length; ii++){
+			setVal[ii] = iniVal[ii].split(';;');
+		}
+		// UI Policies等で、変化させるキーがあるときは、関連項目の最後に入れる
+		for(ii = 0; ii < 5; ii++){
+			// セット(申請者項目１～５)
+			g_form.setValue('u_applicant_' + (ii + 1) + '_name', setVal[ii][1]);
+			g_form.setValue('u_applicant_' + (ii + 1) + '_choice', setVal[ii][2]);
+			g_form.setValue('u_applicant_' + (ii + 1) + '_initial_value', setVal[ii][3]);
+			g_form.setValue('u_applicant_' + (ii + 1) + '_boolean', setVal[ii][4]);
+			g_form.setValue('u_applicant_' + (ii + 1) + '_class', setVal[ii][0]);
+		}
+		for(ii = 5; ii < 7; ii++){
+			// セット(申請者項目６・７)
+			g_form.setValue('u_applicant_' + (ii + 1) + '_name', setVal[ii][1]);
+			g_form.setValue('u_applicant_' + (ii + 1) + '_initial_value', setVal[ii][2]);
+			g_form.setValue('u_applicant_' + (ii + 1) + '_boolean', setVal[ii][3]);
+			g_form.setValue('u_applicant_' + (ii + 1) + '_class', setVal[ii][0]);
+		}
+		for(ii = 7; ii < 10; ii++){
+			// セット(作業者項目１～３)
+			g_form.setValue('u_worker_' + (ii - 6) + '_name', setVal[ii][1]);
+			g_form.setValue('u_worker_' + (ii - 6) + '_initial_value', setVal[ii][2]);
+			g_form.setValue('u_worker_' + (ii - 6) + '_boolean', setVal[ii][3]);
+			g_form.setValue('u_worker_' + (ii - 6) + '_class', setVal[ii][0]);
+		}
+		// セット(ドキュメントリンク)
+		g_form.setValue('u_document_link', setVal[10][0]);
+	}
+}
+]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-21 06:25:37</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>34035c940fb00300fd4e758ce1050e9c</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>onLoad for Applicant Form</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_script_client_34035c940fb00300fd4e758ce1050e9c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-21 07:37:03</sys_updated_on>
+        <table>x_136731_security_applicant_form</table>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

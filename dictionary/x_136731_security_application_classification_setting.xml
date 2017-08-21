@@ -37,7 +37,7 @@
             </choice>
         </element>
         <element label="Boolean" max_length="40" name="u_boolean" type="boolean"/>
-        <element attributes="edge_encryption_enabled=true" label="申請区分" max_length="200" name="u_classification" type="string"/>
+        <element attributes="edge_encryption_enabled=true" display="true" label="申請区分" max_length="200" name="u_classification" type="string"/>
         <element label="作成日" max_length="40" name="u_create_date" read_only="true" type="glide_date"/>
         <element attributes="edge_encryption_enabled=true" label="作成者" max_length="200" name="u_create_name" read_only="true" type="string"/>
         <element attributes="edge_encryption_enabled=true" label="メールタイトル" mandatory="true" max_length="200" name="u_mail_subject" type="string"/>

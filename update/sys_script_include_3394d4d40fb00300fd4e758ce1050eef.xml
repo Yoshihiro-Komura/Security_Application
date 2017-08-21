@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_136731_security.GetParaSet</api_name>
+        <client_callable>true</client_callable>
+        <description>パラメータ設定の読み込み（サーバースクリプト）</description>
+        <name>GetParaSet</name>
+        <script><![CDATA[var GetParaSet = Class.create();
+GetParaSet.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+	getPara: function(){
+		var retVal = '';
+		var getParaset = new GlideRecord('x_136731_security_parameter_setting');
+		getParaset.query();
+		getParaset.next();
+		// 返値のセット(申請者項目１)
+		retVal += getParaset.u_applicant_1_class + ';;';
+		retVal += getParaset.u_applicant_1_name + ';;';
+		retVal += getParaset.u_applicant_1_choice + ';;';
+		retVal += getParaset.u_applicant_1_initial_value + ';;';
+		retVal += getParaset.u_applicant_1_boolean + ';:;';
+		// 返値のセット(申請者項目２)
+		retVal += getParaset.u_applicant_2_class + ';;';
+		retVal += getParaset.u_applicant_2_name + ';;';
+		retVal += getParaset.u_applicant_2_choice + ';;';
+		retVal += getParaset.u_applicant_2_initial_value + ';;';
+		retVal += getParaset.u_applicant_2_boolean + ';:;';
+		// 返値のセット(申請者項目３)
+		retVal += getParaset.u_applicant_3_class + ';;';
+		retVal += getParaset.u_applicant_3_name + ';;';
+		retVal += getParaset.u_applicant_3_choice + ';;';
+		retVal += getParaset.u_applicant_3_initial_value + ';;';
+		retVal += getParaset.u_applicant_3_boolean + ';:;';
+		// 返値のセット(申請者項目４)
+		retVal += getParaset.u_applicant_4_class + ';;';
+		retVal += getParaset.u_applicant_4_name + ';;';
+		retVal += getParaset.u_applicant_4_choice + ';;';
+		retVal += getParaset.u_applicant_4_initial_value + ';;';
+		retVal += getParaset.u_applicant_4_boolean + ';:;';
+		// 返値のセット(申請者項目５)
+		retVal += getParaset.u_applicant_5_class + ';;';
+		retVal += getParaset.u_applicant_5_name + ';;';
+		retVal += getParaset.u_applicant_5_choice + ';;';
+		retVal += getParaset.u_applicant_5_initial_value + ';;';
+		retVal += getParaset.u_applicant_5_boolean + ';:;';
+		// 返値のセット(申請者項目６)
+		retVal += getParaset.u_applicant_6_class + ';;';
+		retVal += getParaset.u_applicant_6_name + ';;';
+		retVal += getParaset.u_applicant_6_initial_value + ';;';
+		retVal += getParaset.u_applicant_6_boolean + ';:;';
+		// 返値のセット(申請者項目７)
+		retVal += getParaset.u_applicant_7_class + ';;';
+		retVal += getParaset.u_applicant_7_name + ';;';
+		retVal += getParaset.u_applicant_7_initial_value + ';;';
+		retVal += getParaset.u_applicant_7_boolean + ';:;';
+		// 返値のセット(作業者項目１)
+		retVal += getParaset.u_worker_1_class + ';;';
+		retVal += getParaset.u_worker_1_name + ';;';
+		retVal += getParaset.u_worker_1_initial_value + ';;';
+		retVal += getParaset.u_worker_1_boolean + ';:;';
+		// 返値のセット(作業者項目２)
+		retVal += getParaset.u_worker_2_class + ';;';
+		retVal += getParaset.u_worker_2_name + ';;';
+		retVal += getParaset.u_worker_2_initial_value + ';;';
+		retVal += getParaset.u_worker_2_boolean + ';:;';
+		// 返値のセット(作業者項目３)
+		retVal += getParaset.u_worker_3_class + ';;';
+		retVal += getParaset.u_worker_3_name + ';;';
+		retVal += getParaset.u_worker_3_initial_value + ';;';
+		retVal += getParaset.u_worker_3_boolean + ';:;';
+		// 返値のセット(ドキュメントリンク)
+		retVal += getParaset.u_dosument_link;
+		
+		return retVal;
+	},
+	type: 'GetParaSet'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-21 05:18:45</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>3394d4d40fb00300fd4e758ce1050eef</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>GetParaSet</sys_name>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_script_include_3394d4d40fb00300fd4e758ce1050eef</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-21 07:08:46</sys_updated_on>
+    </sys_script_include>
+</record_update>
