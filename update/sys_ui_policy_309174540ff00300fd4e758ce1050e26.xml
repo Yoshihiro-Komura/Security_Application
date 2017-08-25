@@ -15,8 +15,8 @@
         <reverse_if_false>true</reverse_if_false>
         <run_scripts>true</run_scripts>
         <script_false><![CDATA[function onCondition() {
-	g_form.setDisplay('u_applicant_1_value_1', false);
-	g_form.setDisplay('u_applicant_1_value_2', false);
+	//g_form.setDisplay('u_applicant_1_value_1', false);
+	//g_form.setDisplay('u_applicant_1_value_2', false);
 }]]></script_false>
         <script_true><![CDATA[function onCondition() {
 	var getVal, ii;
@@ -56,7 +56,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>309174540ff00300fd4e758ce1050e26</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>Applicant Form for Applicant 1 on Show/Hide</sys_name>
         <sys_overrides/>
         <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
@@ -65,7 +65,7 @@
         <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
         <sys_update_name>sys_ui_policy_309174540ff00300fd4e758ce1050e26</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-08-21 08:34:03</sys_updated_on>
+        <sys_updated_on>2017-08-24 04:10:51</sys_updated_on>
         <table>x_136731_security_applicant_form</table>
         <ui_type>10</ui_type>
         <view/>

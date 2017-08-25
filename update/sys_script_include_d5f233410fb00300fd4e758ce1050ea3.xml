@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_136731_security.GetDBSet</api_name>
+        <client_callable>true</client_callable>
+        <description>データベース設定の読み込み（サーバースクリプト）</description>
+        <name>GetDBSet</name>
+        <script><![CDATA[var GetDBSet = Class.create();
+GetDBSet.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+	getDB: function() {
+		var retVal = '';
+		var getParaset = new GlideRecord('x_136731_security_db_setting');
+		getParaset.query();
+		getParaset.next();
+		// 返値のセット()
+		retVal += getParaset.u_applicant_title + ';;';
+		retVal += getParaset.u_infomation + ';;';
+		retVal += getParaset.u_infomation_link;
+		return retVal;
+	},
+    type: 'GetDBSet'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-24 05:22:46</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>d5f233410fb00300fd4e758ce1050ea3</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>GetDBSet</sys_name>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_script_include_d5f233410fb00300fd4e758ce1050ea3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-24 05:46:59</sys_updated_on>
+    </sys_script_include>
+</record_update>

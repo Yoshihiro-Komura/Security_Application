@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="u_applicant_4_value_1" label="申請者項目4_1" language="en" table="x_136731_security_applicant_form">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_applicant_4_value_1</element>
+            <help/>
+            <hint/>
+            <label>申請者項目4_1</label>
+            <language>en</language>
+            <name>x_136731_security_applicant_form</name>
+            <plural>申請者項目4_1s</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-08-24 00:30:35</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>1f817ac10f300300fd4e758ce1050e3d</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>申請者項目4_1</sys_name>
+            <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+            <sys_update_name>sys_documentation_x_136731_security_applicant_form_u_applicant_4_value_1_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-08-24 04:52:49</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

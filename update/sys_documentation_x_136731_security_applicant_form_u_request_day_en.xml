@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
-    <sys_documentation element="u_request_day" label="Request Day" language="en" table="x_136731_security_applicant_form">
+    <sys_documentation element="u_request_day" label="依頼日" language="en" table="x_136731_security_applicant_form">
         <sys_documentation action="INSERT_OR_UPDATE">
             <element>u_request_day</element>
             <help/>
             <hint/>
-            <label>Request Day</label>
+            <label>依頼日</label>
             <language>en</language>
             <name>x_136731_security_applicant_form</name>
-            <plural>Request Days</plural>
+            <plural>依頼日s</plural>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2017-08-18 01:22:39</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_id>57e384130fa04300fd4e758ce1050e2e</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_name>Request Day</sys_name>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>依頼日</sys_name>
             <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
             <sys_update_name>sys_documentation_x_136731_security_applicant_form_u_request_day_en</sys_update_name>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-08-18 01:22:39</sys_updated_on>
+            <sys_updated_on>2017-08-24 04:45:08</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

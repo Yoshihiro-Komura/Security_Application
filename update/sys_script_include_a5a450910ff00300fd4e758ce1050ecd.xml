@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_136731_security.GetClientValue</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>GetClientValue</name>
+        <script><![CDATA[var GetClientValue = Class.create();
+GetClientValue.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+	getClient: function(){
+		var tableRecord = new GlideRecord("sys_user");
+		var val = this.getParameter('sysparm_sysID');
+		tableRecord.get(val);
+		var retVal = '';
+		retVal += tableRecord.email + ';;';
+		retVal += tableRecord.phone + ';;';
+		retVal += tableRecord.mobile_phone + ';;';
+		var departID = tableRecord.department;
+		
+		var tableDepart = new GlideRecord("cmn_department");
+		tableDepart.get(departID);
+		
+		retVal += tableDepart.name;
+
+		return retVal;
+	},
+    type: 'GetClientValue'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-24 07:53:15</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>a5a450910ff00300fd4e758ce1050ecd</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>GetClientValue</sys_name>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_script_include_a5a450910ff00300fd4e758ce1050ecd</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-24 08:35:38</sys_updated_on>
+    </sys_script_include>
+</record_update>

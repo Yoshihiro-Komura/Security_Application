@@ -9,6 +9,12 @@
             </choice>
         </element>
         <element attributes="edge_encryption_enabled=true" default="所属長" label="名称" max_length="100" name="u_authorizer_2" type="string"/>
+        <element choice="3" default="0" label="条件" max_length="40" name="u_authorizer_2_choice" type="integer">
+            <choice>
+                <element label="任意" sequence="0" value="0"/>
+                <element label="必須" sequence="1" value="1"/>
+            </choice>
+        </element>
         <element attributes="edge_encryption_enabled=true" default="所属部門長" label="名称" max_length="100" name="u_authorizer_3" type="string"/>
         <element choice="3" default="0" label="条件" max_length="40" name="u_authorizer_3_choice" type="integer">
             <choice>
@@ -30,7 +36,7 @@
                 <element label="必須" sequence="1" value="1"/>
             </choice>
         </element>
-        <element choice="3" default="0" label="条件" max_length="40" name="u_authrizer_2_choice" type="integer">
+        <element choice="3" default="0" label="条件＿" max_length="40" name="u_authrizer_2_choice" type="integer">
             <choice>
                 <element label="任意" sequence="0" value="0"/>
                 <element label="必須" sequence="1" value="1"/>
