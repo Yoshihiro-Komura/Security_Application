@@ -18,17 +18,30 @@
 
 }]]></script_false>
         <script_true><![CDATA[function onCondition() {
-	var getVal, ii;
+	var getVal, getSts, getRsv, ii;
 	// フィールドのラベルを登録
 	var setVal ='u_applicant_6';
+	// ステータス状態のゲット
+	getSts = g_form.getValue('u_status');
 	// フィールドの名称を変更
 	g_form.setLabelOf(setVal + '_value', g_form.getValue(setVal + '_name'));
+	// 既存の値を保存
+	getRsv = g_form.getValue(setVal + '_value');
 	// フィールドの必須変更
 	g_form.setMandatory(setVal + '_value', g_form.getBooleanValue(setVal + '_boolean'));
-	// 初期値があるか？
-	getVal = g_form.getValue(setVal + '_initial_value');
-	if(getVal != ''){
-		g_form.setValue(setVal + '_value', getVal);
+	// 既存データはあったか？
+	if(getRsv != ''){
+		g_form.setValue(setVal + '_value', getRsv);
+	} else {
+		// 初期値があるか？
+		getVal = g_form.getValue(setVal + '_initial_value');
+		if(getVal != ''){
+			g_form.setValue(setVal + '_value', getVal);
+		}
+	}
+	// ステータスは、作成中以外か？
+	if(getSts != 1){
+		g_form.setReadOnly(setVal + '_value', true);
 	}
 }]]></script_true>
         <set_values/>
@@ -40,7 +53,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>d209230d0f700300fd4e758ce1050e58</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Applicant Form for Applicant 6 on Show/Hide</sys_name>
         <sys_overrides/>
         <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
@@ -49,7 +62,7 @@
         <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
         <sys_update_name>sys_ui_policy_d209230d0f700300fd4e758ce1050e58</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-08-24 04:38:30</sys_updated_on>
+        <sys_updated_on>2017-08-29 00:25:19</sys_updated_on>
         <table>x_136731_security_applicant_form</table>
         <ui_type>10</ui_type>
         <view/>

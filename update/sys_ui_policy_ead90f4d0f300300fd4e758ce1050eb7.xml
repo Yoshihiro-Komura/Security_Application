@@ -19,19 +19,26 @@
 	//g_form.setDisplay('u_applicant_3_value_2', false);
 }]]></script_false>
         <script_true><![CDATA[function onCondition() {
-	var getVal, ii;
+	var getVal, getSts, getRsv, ii;
 	// フィールドのラベルを登録
 	var setVal ='u_applicant_3';
+	// ステータス状態のゲット
+	getSts = g_form.getValue('u_status');
 	// テキストかキーワード選択か？のセット
 	var getCho = g_form.getValue(setVal + '_class');
+	// 既存データの保存
+	getRsv = g_form.getValue(setVal + '_value_' + getCho);
 	// フィールドの名称を変更
 	g_form.setLabelOf(setVal + '_value_' + getCho, g_form.getValue(setVal + '_name'));
 	// フィールドの必須変更
 	g_form.setMandatory(setVal + '_value_' + getCho, g_form.getBooleanValue(setVal + '_boolean'));
 	// テキストかキーワード選択か？
 	if(getCho == 2){
+		// キーワード選択の場合
+		// 選択肢の読み込みと分解
 		getVal = g_form.getValue(setVal + '_choice');
 		var selVal = getVal.split(';');
+		// Fieldを初期化して選択肢を登録
 		g_form.clearOptions(setVal + '_value_2');
 		g_form.addOption(setVal + '_value_2', '', '');
 		for(ii = 0; ii < selVal.length; ii++){
@@ -41,10 +48,19 @@
 	} else {
 		g_form.setDisplay(setVal + '_value_2', false);
 	}
-	// 初期値があるか？
-	getVal = g_form.getValue(setVal + '_initial_value');
-	if(getVal != ''){
-		g_form.setValue(setVal + '_value_' + getCho, getVal);
+	// 元々登録された値はあったか？
+	if(getRsv != ''){
+		g_form.setValue(setVal + '_value_' + getCho, getRsv);
+	} else {
+		// 初期値があるか？
+		getVal = g_form.getValue(setVal + '_initial_value');
+		if(getVal != ''){
+			g_form.setValue(setVal + '_value_' + getCho, getVal);
+		}
+	}
+	// ステータスは、作成中以外か？
+	if(getSts != 1){
+		g_form.setReadOnly(setVal + '_value_' + getCho, true);
 	}
 }]]></script_true>
         <set_values/>
@@ -56,7 +72,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>ead90f4d0f300300fd4e758ce1050eb7</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>Applicant Form for Applicant 3 on Show/Hide</sys_name>
         <sys_overrides/>
         <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
@@ -65,7 +81,7 @@
         <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
         <sys_update_name>sys_ui_policy_ead90f4d0f300300fd4e758ce1050eb7</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-08-24 04:11:50</sys_updated_on>
+        <sys_updated_on>2017-08-29 00:27:01</sys_updated_on>
         <table>x_136731_security_applicant_form</table>
         <ui_type>10</ui_type>
         <view/>
