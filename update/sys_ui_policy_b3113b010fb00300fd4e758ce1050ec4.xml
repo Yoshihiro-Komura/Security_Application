@@ -18,17 +18,24 @@
 
 }]]></script_false>
         <script_true><![CDATA[function onCondition() {
-	var getVal, ii;
+	var getVal, getRsv, ii;
 	// フィールドのラベルを登録
 	var setVal ='u_worker_2';
+	// 既存データの保存
+	getRsv = g_form.getValue(setVal + '_value');
 	// フィールドの名称を変更
 	g_form.setLabelOf(setVal + '_value', g_form.getValue(setVal + '_name'));
 	// フィールドの必須変更
 	g_form.setMandatory(setVal + '_value', g_form.getBooleanValue(setVal + '_boolean'));
-	// 初期値があるか？
-	getVal = g_form.getValue(setVal + '_initial_value');
-	if(getVal != ''){
-		g_form.setValue(setVal + '_value', getVal);
+	// 元々登録された値はあったか？
+	if(getRsv != ''){
+		g_form.setValue(setVal + '_value', getRsv);
+	} else {
+		// 初期値があるか？
+		getVal = g_form.getValue(setVal + '_initial_value');
+		if(getVal != ''){
+			g_form.setValue(setVal + '_value', getVal);
+		}
 	}
 }]]></script_true>
         <set_values/>
@@ -40,7 +47,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>b3113b010fb00300fd4e758ce1050ec4</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Applicant Form for Worker 2 on Show/Hide</sys_name>
         <sys_overrides/>
         <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
@@ -49,7 +56,7 @@
         <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
         <sys_update_name>sys_ui_policy_b3113b010fb00300fd4e758ce1050ec4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-08-24 05:13:37</sys_updated_on>
+        <sys_updated_on>2017-08-29 07:20:25</sys_updated_on>
         <table>x_136731_security_applicant_form</table>
         <ui_type>10</ui_type>
         <view/>

@@ -48,16 +48,16 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-08-10 04:12:06</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>effd97a80f600300fd4e758ce1050eb4</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_id>5de4bdb60f7c8300fd4e758ce1050e80</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>名称　：</sys_name>
         <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
         <sys_update_name>sys_dictionary_x_136731_security_parameter_setting_u_applicant_1_name</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-08-14 01:29:21</sys_updated_on>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2017-08-29 06:35:30</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

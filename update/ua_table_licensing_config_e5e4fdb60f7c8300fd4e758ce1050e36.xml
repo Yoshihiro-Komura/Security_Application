@@ -5,24 +5,24 @@
         <license_condition/>
         <license_model>none</license_model>
         <license_roles/>
-        <name>x_136731_security_application_classification_item</name>
+        <name>x_136731_security_applicant_form</name>
         <op_delete>true</op_delete>
         <op_insert>true</op_insert>
         <op_update>true</op_update>
         <owner_condition/>
         <sys_class_name>ua_table_licensing_config</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-08-07 07:42:24</sys_created_on>
+        <sys_created_on>2017-08-17 01:41:13</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>7a51f07b0fd00300fd4e758ce1050eb2</sys_id>
+        <sys_id>e5e4fdb60f7c8300fd4e758ce1050e36</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>x_136731_security_application_classification_item</sys_name>
+        <sys_name>x_136731_security_applicant_form</sys_name>
         <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
-        <sys_update_name>ua_table_licensing_config_7a51f07b0fd00300fd4e758ce1050eb2</sys_update_name>
+        <sys_update_name>ua_table_licensing_config_e5e4fdb60f7c8300fd4e758ce1050e36</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-08-07 07:42:24</sys_updated_on>
+        <sys_updated_on>2017-08-17 01:41:13</sys_updated_on>
     </ua_table_licensing_config>
 </record_update>
