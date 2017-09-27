@@ -48,7 +48,7 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-08-07 07:45:35</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>bde4fdb60f7c8300fd4e758ce1050e84</sys_id>
+        <sys_id>0302c70b0ff00300fd4e758ce1050e7c</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>申請区分②</sys_name>
         <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
@@ -57,7 +57,7 @@
         <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
         <sys_update_name>sys_dictionary_x_136731_security_application_classification_item_u_request_name</sys_update_name>
         <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2017-08-29 06:35:25</sys_updated_on>
+        <sys_updated_on>2017-08-30 06:50:55</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

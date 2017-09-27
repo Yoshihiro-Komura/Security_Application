@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description/>
+        <direct>true</direct>
+        <endpoint>x_136731_security_help_sample.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<head>
+		
+	</head>
+	<body>
+		<h1>ヘルプ画面デモ</h1>
+		<img src="help_sample.png" width="784" />
+		<p>画像の埋め込みも可能です</p>
+	</body>
+</j:jelly>]]></html>
+        <name>help_sample</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-09-27 02:19:40</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>c3cf428c0f210300fd4e758ce1050e4c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>help_sample</sys_name>
+        <sys_package display_value="Security Applocation" source="x_136731_security">82c03c3f0f900300fd4e758ce1050ee4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Security Applocation">82c03c3f0f900300fd4e758ce1050ee4</sys_scope>
+        <sys_update_name>sys_ui_page_c3cf428c0f210300fd4e758ce1050e4c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-09-27 02:19:40</sys_updated_on>
+    </sys_ui_page>
+</record_update>
